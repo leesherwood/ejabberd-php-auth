@@ -10,7 +10,7 @@ composer require tbcdigital/ejabberd-php-auth:~1.0
 
 or add this to your composer.json
 ````
-"tbcdigital\ejabberd-php-auth":"~1.0"
+"tbcdigital/ejabberd-php-auth":"~1.0"
 ````
 
 #### Installation (other)
