@@ -44,6 +44,13 @@ class AuthenticationService
      */
     private $executor = null;
 
+    /**
+     * Flag to allow the application to run, set this to false to cleanly shutdown
+     *
+     * @var bool
+     */
+    private $mayRun = false;
+
 
     /**
      * Boot up the service ready for the run loop
@@ -67,7 +74,9 @@ class AuthenticationService
 
         // Open resource streams ready
         if (null === $this->stdInput) {
-            $this->bindResourceStreams();
+            if(false === $this->bindResourceStreams()) {
+                return;
+            }
         }
 
         // Clear everything just in case this is a second run
@@ -86,7 +95,7 @@ class AuthenticationService
 
             }
 
-        } while (true);
+        } while ($this->mayRun);
 
     }
 
@@ -114,6 +123,10 @@ class AuthenticationService
 
         $this->logger->debug("Resource streams STDIN and STDOUT bound successfully");
 
+        $this->mayRun = true;
+
+        return true;
+
     }
 
 
@@ -126,7 +139,11 @@ class AuthenticationService
     {
 
         // Get the first 3 bytes of input (the byte length identifier from ejabberd), this will block until something is available
-        $input = @fgets($this->stdInput, 3);
+        if(false === ($input = @fgets($this->stdInput, 3))) {
+            $this->logger->error("Unable to read from stdin, shutting down application");
+            $this->mayRun = false;
+            return false;
+        }
 
         // Get the byte length as a decimal
         if (false === ($inputParsed = @unpack("n", $input)) || !is_array($inputParsed) || !isset($inputParsed[1])) {
