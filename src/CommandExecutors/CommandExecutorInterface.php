@@ -1,4 +1,4 @@
-<?php namespace Tbcdigital\Ejabberd\CommandExecutors;
+<?php namespace LeeSherwood\Ejabberd\CommandExecutors;
 
 /**
  * Implement this interface to support ejabberd external authentication
@@ -14,11 +14,11 @@
  * may cause hard to debug issues. It is up to you as the interface implementor to validate the return values if you require a
  * more strict control on return values (i.e. you may wish to implement a common return method)
  *
- * @package Tbcdigital\Ejabberd
- * @author Lee Sherwood <lee.sherwood@tbc-digital.com>
+ * @package LeeSherwood\Ejabberd
+ * @author Lee Sherwood
  */
-interface CommandExecutorInterface {
-
+interface CommandExecutorInterface
+{
     /**
      * Authenticate a user (login)
      *
@@ -30,7 +30,6 @@ interface CommandExecutorInterface {
      */
     public function authenticate($username, $servername, $password);
 
-
     /**
      * Check if a user exists
      *
@@ -40,7 +39,6 @@ interface CommandExecutorInterface {
      * @return bool
      */
     public function userExists($username, $servername);
-
 
     /**
      * Set a password for a user
@@ -53,7 +51,6 @@ interface CommandExecutorInterface {
      */
     public function setPassword($username, $servername, $password);
 
-
     /**
      * Register a user
      *
@@ -65,7 +62,6 @@ interface CommandExecutorInterface {
      */
     public function register($username, $servername, $password);
 
-
     /**
      * Delete a user
      *
@@ -75,7 +71,6 @@ interface CommandExecutorInterface {
      * @return bool
      */
     public function removeUser($username, $servername);
-
 
     /**
      * Delete a user with password validation
@@ -87,5 +82,4 @@ interface CommandExecutorInterface {
      * @return bool
      */
     public function removeUserWithPassword($username, $servername, $password);
-
 }

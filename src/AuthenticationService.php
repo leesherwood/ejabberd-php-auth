@@ -1,14 +1,16 @@
-<?php namespace Tbcdigital\Ejabberd;
+<?php namespace LeeSherwood\Ejabberd;
+
+use LeeSherwood\Ejabberd\CommandExecutors\CommandExecutorInterface;
+use Psr\Log\LoggerInterface;
 
 /**
  * Main application class
  *
- * @package Tbcdigital\Ejabberd
- * @author Lee Sherwood <lee.sherwood@tbc-digital.com>
+ * @package LeeSherwood\Ejabberd
+ * @author Lee Sherwood
  */
 class AuthenticationService
 {
-
     /**
      * The command+args from ejabberd passed to the application
      *
@@ -33,14 +35,14 @@ class AuthenticationService
     /**
      * Somewhere to write the logs
      *
-     * @var \Psr\Log\LoggerInterface
+     * @var LoggerInterface
      */
     private $logger = null;
 
     /**
      * The command executor instance
      *
-     * @var \Tbcdigital\Ejabberd\CommandExecutors\CommandExecutorInterface
+     * @var CommandExecutorInterface
      */
     private $executor = null;
 
@@ -51,27 +53,23 @@ class AuthenticationService
      */
     private $mayRun = false;
 
-
     /**
      * Boot up the service ready for the run loop
      *
-     * @param \Psr\Log\LoggerInterface|\Psr\Log\LoggerInterface $logger
-     * @param \Tbcdigital\Ejabberd\CommandExecutors\CommandExecutorInterface $executor
+     * @param LoggerInterface $logger
+     * @param CommandExecutorInterface $executor
      */
-    public function __construct(\Psr\Log\LoggerInterface $logger, \Tbcdigital\Ejabberd\CommandExecutors\CommandExecutorInterface $executor)
+    public function __construct(LoggerInterface $logger, CommandExecutorInterface $executor)
     {
-
         $this->logger = $logger;
         $this->executor = $executor;
     }
 
-
     /**
-     * Start's it up
+     * Start it up
      */
     public function run()
     {
-
         // Open resource streams ready
         if (null === $this->stdInput) {
             if(false === $this->bindResourceStreams()) {
@@ -96,10 +94,7 @@ class AuthenticationService
             }
 
         } while ($this->mayRun);
-
     }
-
-
 
     /**
      * Open the standard input/output streams ready for read/write
@@ -108,7 +103,6 @@ class AuthenticationService
      */
     private function bindResourceStreams()
     {
-
         $this->logger->debug("Binding Resource Streams...");
 
         if (false === ($this->stdInput = @fopen("php://stdin", "rb"))) {
@@ -126,9 +120,7 @@ class AuthenticationService
         $this->mayRun = true;
 
         return true;
-
     }
-
 
     /**
      * Check to see if there is any data available, and read it if so
@@ -137,7 +129,6 @@ class AuthenticationService
      */
     private function checkInput()
     {
-
         // Get the first 3 bytes of input (the byte length identifier from ejabberd), this will block until something is available
         if(false === ($input = @fgets($this->stdInput, 3))) {
             $this->logger->error("Unable to read from stdin, shutting down application");
@@ -161,9 +152,7 @@ class AuthenticationService
         $this->logger->debug("Input read was: ".$this->data);
 
         return true;
-
     }
-
 
     /**
      * Writes the output back to ejabberd
@@ -172,7 +161,6 @@ class AuthenticationService
      */
     private function writeOutput($output)
     {
-
         $returnInt = true === boolval($output) ? 1 : 0;
         $out = @pack("nn", 2, $returnInt);
 
@@ -181,21 +169,16 @@ class AuthenticationService
         } else {
             $this->logger->debug("Successfully wrote output [$returnInt] to stdout");
         }
-
     }
-
 
     /**
      * Clears the class properties ready for the next command to come in
      */
     private function clear()
     {
-
         $this->logger->debug("Clearing previous command data");
         $this->data = null;
-
     }
-
 
     /**
      * Parses the command and routes it to the correct command executor method
@@ -204,7 +187,6 @@ class AuthenticationService
      */
     private function processCommand()
     {
-
         if (empty($this->data)) {
             return false;
         }
@@ -253,7 +235,5 @@ class AuthenticationService
         }
 
         return $result;
-
     }
-
 }

@@ -1,4 +1,4 @@
-<?php namespace Tbcdigital\Ejabberd\CommandExecutors;
+<?php namespace LeeSherwood\Ejabberd\CommandExecutors;
 
 /**
  * Dummy command executor for ejabberd
@@ -7,7 +7,7 @@
  * You may want to use this class to test your ejabberd external authentication module is set up correctly
  * before you start creating your custom code.
  *
- * @package Tbcdigital\Ejabberd
+ * @package LeeSherwood\Ejabberd
  * @author Lee Sherwood <lee.sherwood@tbc-digital.com>
  */
 class DummyCommandExecutor implements CommandExecutorInterface {
@@ -93,5 +93,4 @@ class DummyCommandExecutor implements CommandExecutorInterface {
     {
         return false;
     }
-
 }
