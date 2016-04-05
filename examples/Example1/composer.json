@@ -1,15 +1,14 @@
 {
-  "name": "tbcdigital/ejabberd-php-auth-ex1",
+  "name": "leesherwood/ejabberd-php-auth-ex1",
   "description": "Example implementation 1",
   "license": "MIT",
   "authors": [
     {
-      "name": "Lee Sherwood",
-      "email": "lee.sherwood@tbc-digital.com"
+      "name": "Lee Sherwood"
     }
   ],
   "require": {
-    "tbcdigital/ejabberd-php-auth": "dev-master",
+    "leesherwood/ejabberd-php-auth": "dev-master",
     "monolog/monolog": "~1.12@dev"
   },
   "minimum-stability": "dev",

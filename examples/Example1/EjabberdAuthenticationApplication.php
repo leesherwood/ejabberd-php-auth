@@ -5,8 +5,8 @@
 require_once __DIR__."/vendor/autoload.php";
 
 use Monolog\Logger;
-use Tbcdigital\Ejabberd\AuthenticationService;
-use Tbcdigital\Ejabberd\CommandExecutors\DummyCommandExecutor;
+use LeeSherwood\Ejabberd\AuthenticationService;
+use LeeSherwood\Ejabberd\CommandExecutors\DummyCommandExecutor;
 
 // Setup Logger
 $logger = new Logger('ejabberdAuth');

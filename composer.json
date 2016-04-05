@@ -1,12 +1,11 @@
 {
-  "name": "tbcdigital/ejabberd-php-auth",
+  "name": "leesherwood/ejabberd-php-auth",
   "description": "ejabberd external authentication with PHP",
   "keywords": ["ejabberd", "ejabber", "xmpp", "ext_auth"],
   "license": "MIT",
   "authors": [
     {
-      "name": "Lee Sherwood",
-      "email": "Lee.Sherwood@tbc-digital.com"
+      "name": "Lee Sherwood"
     }
   ],
   "require": {
@@ -15,7 +14,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Tbcdigital\\Ejabberd\\": "src/"
+      "LeeSherwood\\Ejabberd\\": "src/"
     }
   },
   "minimum-stability": "dev",

@@ -8,7 +8,7 @@
  * before you start creating your custom code.
  *
  * @package LeeSherwood\Ejabberd
- * @author Lee Sherwood <lee.sherwood@tbc-digital.com>
+ * @author Lee Sherwood
  */
 class DummyCommandExecutor implements CommandExecutorInterface {
 
