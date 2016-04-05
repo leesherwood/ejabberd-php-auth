@@ -5,7 +5,7 @@ This library provides a convenient way to customise the ejabberd authentication 
 #### Installation (via composer)
 Run this:
 ````
-composer require tbcdigital/ejabberd-php-auth:~1.0
+composer require leesherwood/ejabberd-php-auth:~1.0
 ````
 
 or add this to your composer.json
