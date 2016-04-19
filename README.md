@@ -5,12 +5,12 @@ This library provides a convenient way to customise the ejabberd authentication 
 #### Installation (via composer)
 Run this:
 ````
-composer require leesherwood/ejabberd-php-auth:~1.0
+composer require leesherwood/ejabberd-php-auth:~1.1
 ````
 
 or add this to your composer.json
 ````
-"leesherwood/ejabberd-php-auth":"~1.0"
+"leesherwood/ejabberd-php-auth":"~1.1"
 ````
 
 #### Installation (other)

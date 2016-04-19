@@ -11,6 +11,11 @@
     "leesherwood/ejabberd-php-auth": "dev-master",
     "monolog/monolog": "~1.12@dev"
   },
+  "autoload" : {
+    "psr-4" : {
+      "LeeSherwood\\Ejabberd\\": "../../src"
+    }
+  },
   "minimum-stability": "dev",
   "prefer-stable": true,
 
