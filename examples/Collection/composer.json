@@ -1,0 +1,22 @@
+{
+  "name": "leesherwood/ejabberd-php-auth-ex1",
+  "description": "Example implementation 1",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Lee Sherwood"
+    }
+  ],
+  "require": {
+    "leesherwood/ejabberd-php-auth": "dev-master",
+    "monolog/monolog": "~1.12@dev"
+  },
+  "autoload" : {
+    "psr-4" : {
+      "LeeSherwood\\Ejabberd\\": "../../src"
+    },
+    "files" : ["EchoCommandExecutor.php"]
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
