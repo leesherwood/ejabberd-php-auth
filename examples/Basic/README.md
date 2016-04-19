@@ -1,5 +1,5 @@
 ####What is this?
-An example implementation of the ejabberd php auth library.
+An simple example implementation of the ejabberd php auth library.
 
 ####How to use this?
 Copy the entire folder somewhere and don't forget to:
@@ -12,5 +12,4 @@ watch -n 1 tail -n 50 /var/log/syslog
 ````
 That will allow you to monitor the debug output based on the example's logger setup.
 
-####This documentation is ^$*!
-Yep, i know. Feel free to do a PR :)
+Alternatively for previewing how it works, you can set the logger to use `php://stdout` and use the PHP-CLI to interact (see readme for the collection example for more info)
